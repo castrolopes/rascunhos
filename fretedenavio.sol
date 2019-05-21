@@ -2,81 +2,118 @@ pragma solidity 0.5.8;
 
 contract FreteDeNavio {
     
-    string variavelNomeDoNavio;
-    string variavelNomeDoFretador;
-    string variavelNomeDoAfretador;
-    uint variavelDuracaoDoFrete;
-    uint variavelNumeroDeContainersFretados;
-    uint variavelNumeroTotalDeSlots;
-    uint variavelValorTotalDoFrete;
-    uint variavelDataDeInicioDoFrete;
-    uint variavelDataDeEncerramentoDoFrete;
-    uint variavelDataDeCancelamentoDoContrato;
-    uint variavelDataLimiteParaNotificacaoDeCancelamentoDoContrato;
-    string variavelCondicaoInicialDoNavioFretador;
-    string variavelTipoDeCargaASerTransportada;
-    string variavelTipoDeCargaProibida;
-    string variavelPaisesDePassagemProibida;
-    string variavelPermissaoDePassagemPeloGelo;
-    string variavelPermissaoDeAportarNoGelo;
-    address payable contaDoFretador;
-    address payable contaDoAfretador;
-    uint variavelValorPagoPeloAfretador;
-    string variavelForoDeEleicao;
-    uint variavelNumeroDeContainersTransportados;
+    string public variavelNomeDoNavio;
+    string public variavelNomeDoFretador;
+    string public variavelNomeDoAfretador;
+    uint public variavelDuracaoDoFrete;
+    uint public variavelNumeroDeContainersTransportados;
+    uint public variavelValorTotalDoFrete;
+    uint public variavelDataDeInicioDoFrete;
+    uint public variavelDataDeEncerramentoDoFrete;
+    uint public variavelDataDeCancelamentoDoContrato;
+    uint public variavelDataLimiteParaNotificacaoDeCancelamentoDoContrato;
+    string public variavelCondicaoInicialDoNavioFretador;
+    string public variavelTipoDeCargaASerTransportada;
+    string public variavelTipoDeCargaProibida;
+    string public variavelPaisesDePassagemProibida;
+    string public variavelPermissaoDePassagemPeloGelo;
+    string public variavelPermissaoDeAportarNoGelo;
+    address payable public variavelContaDoFretador;
+    address payable public variaveloContaDoAfretador;
+    uint public variavelValorPagoPeloAfretador;
+    string public variavelForoDeEleicao;
+    string public variavelNumerosDosSlotsUtilizados;
+    string public variavelNumeroDeTelefoneParaContato;
+    string public variavelEmailInformado;
     
-    struct DadosDoFrete {
-        uint numeroDoSlotUtilizado;
-        uint numeroDoContrato;
-        string nomeDoNavio;
-        string nomeDoFretador;
-        string nomeDoAfretador;
-        uint duracaoDoFrete;
-        uint numeroTotalDeSlots;
-        uint valorTotalDoFrete;
-        uint dataDeInicioDoFrete;
-        uint dataDeEncerramentoDoFrete;
-        string condicaoInicialDoNavioFretador;
-        string tipoDeCargaASerTransportada;
-        string tipoDeCargaProibida;
-        string paisesDePassagemProibida;
-        string permissaoDePassagemPeloGelo;
-        string permissaoDeAportarNoGelo;
-        address payable contaDoFretador;
-        address contaDoAfretador;
-        uint valorPagoPeloAfretador;
-        string foroDeEleicao;
+    struct FichasDosFretes {
+        string NomeDoNavio;
+        string NomeDoFretador;
+        string NomeDoAfretador;
+        uint DuracaoDoFrete;
+        uint ValorTotalDoFrete;
+        uint DataDeInicioDoFrete;
+        uint DataDeEncerramentoDoFrete;
+        uint DataDeCancelamentoDoContrato;
+        uint DataLimiteParaNotificacaoDeCancelamentoDoContrato;
+        string CondicaoInicialDoNavioFretador;
+        string TipoDeCargaASerTransportada;
+        string TipoDeCargaProibida;
+        string PaisesDePassagemProibida;
+        string PermissaoDePassagemPeloGelo;
+        string PermissaoDeAportarNoGelo;
+        address payable ContaDoFretador;
+        address payable ContaDoAfretador;
+        uint ValorPagoPeloAfretador;
+        string ForoDeEleicao;
+        uint NumeroDeContainersTransportados;
+        string NumerosDosSlotUtilizados;
+        string NumeroDeTelefoneParaContato;
+        string EmailInformadoPAraContato;
     }
     
-    DadosDoFrete[] public RegistrosDeFrete;
+    struct FichasDosClientes {
+        string NumerosDosSlotsUtilizados;
+        string NomeDoNavio;
+        string NomeDoFretador;
+        string NomeDoAfretador;
+        uint DuracaoDoFrete;
+        uint ValorTotalDoFrete;
+        uint DataDeInicioDoFrete;
+        uint DataDeEncerramentoDoFrete;
+        uint DataDeCancelamentoDoContrato;
+        uint DataLimiteParaNotificacaoDeCancelamentoDoContrato;
+        string CondicaoInicialDoNavioFretador;
+        string TipoDeCargaASerTransportada;
+        string TipoDeCargaProibida;
+        string PaisesDePassagemProibida;
+        string PermissaoDePassagemPeloGelo;
+        string PermissaoDeAportarNoGelo;
+        address payable ContaDoFretador;
+        address payable ContaDoAfretador;
+        uint ValorPagoPeloAfretador;
+        string ForoDeEleicao;
+        string NumeroDeTelefoneParaContato;
+        string EmailInformadoParaContato;
+    }
+    FichasDosFretes[] public FichaDoFrete;
     
-    mapping(address => DadosDoFrete) public RegistroDeFreteNumero;
+    mapping(address => FichasDosClientes) public FichaDoCliente;
     
     constructor (
-        string memory nomeDoNavio,
-        string memory nomeDoFretador,
-        string memory nomeDoAfretador,
-        uint dataDeInicioDoFrete,
-        uint dataDeEncerramentoDoFrete,
-        uint numeroTotalDeSlots,
-        uint numeroDoRegistroDoFrete,
-        uint valorTotalDoFrete,
-        uint valorPagoPeloAfretador,
-        uint duracaoDoFrete,
-        uint numeroDeContainersTransportados,
-        uint DataDeCancelamentoDoContrato)
+        string memory NomeDoNavio,
+        string memory NomeDoFretador,
+        string memory NomeDoAfretador,
+        uint DuracaoDoFrete,
+        uint DataDeInicioDoFrete,
+        uint DataDeEncerramentoDoFrete,
+        string memory NumerosDosSlotsUtilizados,
+        uint ValorTotalDoFrete,
+        uint ValorPagoPeloAfretador,
+        uint NumeroDeContainersTransportados,
+        string memory EmailInformadoParaContato,
+        string memory NumeroDeTelefoneParaContato,
+        string memory TipoDeCargaASerTransportada,
+        string memory TipoDeCargaProibida,
+        string memory PaisesDePassagemProibida,
+        string memory PermissaoDeAportarNoGelo,
+        string memory PermissaoDePassagemPeloGelo,
+        uint DataLimiteParaNotificacaoDeCancelamentoDoContrato,
+        string memory CondicaoInicialDoNavioFretador
+        )
+
     
     public {
-        variavelNomeDoNavio = nomeDoNavio;
-        variavelNomeDoFretador = nomeDoFretador;
-        variavelNomeDoAfretador = nomeDoAfretador;
-        variavelDataDeInicioDoFrete = dataDeInicioDoFrete;
-        variavelDataDeEncerramentoDoFrete = dataDeEncerramentoDoFrete;
-        variavelValorTotalDoFrete = valorTotalDoFrete;
-        variavelValorPagoPeloAfretador = valorPagoPeloAfretador;
-        variavelDuracaoDoFrete = duracaoDoFrete;
-        variavelNumeroDeContainersTransportados = numeroDeContainersTransportados;
-        variavelDataDeCancelamentoDoContrato = DataDeCancelamentoDoContrato;
+        variavelNomeDoNavio = NomeDoNavio;
+        variavelNomeDoFretador = NomeDoFretador;
+        variavelNomeDoAfretador = NomeDoAfretador;
+        variavelDataDeInicioDoFrete = DataDeInicioDoFrete;
+        variavelDataDeEncerramentoDoFrete = DataDeEncerramentoDoFrete;
+        variavelValorTotalDoFrete = ValorTotalDoFrete;
+        variavelValorPagoPeloAfretador = ValorPagoPeloAfretador;
+        variavelDuracaoDoFrete = DuracaoDoFrete;
+        variavelNumeroDeContainersTransportados = NumeroDeContainersTransportados;
+
     
     }
     
