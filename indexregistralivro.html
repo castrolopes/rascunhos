@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Registro de Livros</title>
+</head>
+<body style="background-image:url('blockchain.jpg');">
+    <div class="container">
+        <h1><center><b><font color=black>Seja bem-vindo ao Registro de Livros na Blockchain.</font></b></center></h1>
+        <br>
+        <center><font color="Grey">
+        Nossos registros são realizados diretamente na Blockchain da Ethereum, sendo, portanto, permanentes e
+        garantindo total segurança quanto à sua imutabilidade e possibilidade de conferência por qualquer pessoa,
+        em qualquer lugar e a qualquer hora.</font>
+        </center>
+        <br>
+        <center><img src="book.jpg" alt="Registrar livro"></center>
+        <br>
+        <br>
+        <h2><center>Se você possuir o número do registro do livro que lhe interessa, verifique abaixo suas características:</center></h2>
+        <div id="numeroDeRegistro">
+            <form action="#" method="get" name="formPesquisa" id="formPesquisa">
+                <div><center>
+                    <label for="numeroDeRegistro">Informe a seguir o número de registro que deseja consultar: </label>
+                    <input type="number" name="numeroDeRegistro" id="numeroDeRegistro" />
+                </div>
+                <div><center>
+                    <button color=dark-blue class="btn btn-primary" onclick="pesquisarRegistro()"><span class="glyphicon glyphicon-search"> PESQUISAR REGISTRO <span class="glyphicon glyphicon-search"></center></span></button>
+                        </center></div>
+            </form>
+            <div id="resultadoPesquisa"></div>
+        </div>
+        <br>
+        <br>
+        <h2><center>Se você possuir o nome do autor do livro que lhe interessa, verifique abaixo suas características:</center></h2>
+        <div id="nomeDoAutor">
+            <form action="#" method="get" name="formPesquisa" id="formPesquisa">
+                <div><center>
+                    <label for="nomeDoAutor">Informe a seguir o nome do autor que deseja consultar: </label>
+                    <input type="text" name="nomeDoAutor" id="nomeDoAutor" />
+                </div>
+                <div><center>
+                    <button color=dark-blue class="btn btn-primary" onclick="pesquisarNomeDoAutor()"><span class="glyphicon glyphicon-search"> PESQUISAR AUTOR <span class="glyphicon glyphicon-search"></center></span></button>
+                        </center></div>
+            </form>
+            <div id="resultadoPesquisa"></div>
+        </div>
+        <br>
+        <br>
+        <h2><center>Se você possuir o número do CPF do autor que lhe interessa, verifique abaixo as informações sobre seu livro:</center></h2>
+        <div id="numeroDeCPF">
+            <form action="#" method="get" name="formPesquisa" id="formPesquisa">
+                <div><center>
+                    <label for="numeroDeCPF">Informe a seguir o número de CPF que deseja consultar: </label>
+                    <input type="number" name="numeroDeCPF" id="numeroDeCPF" />
+                </div>
+                <div><center>
+                    <button color=dark-blue class="btn btn-primary" onclick="pesquisarRG()"><span class="glyphicon glyphicon-search"> PESQUISAR CPF <span class="glyphicon glyphicon-search"></center></span></button>
+                        </center></div>
+            </form>
+            <div id="resultadoPesquisa"></div>
+        </div>
+        <br>
+        <br>
+        <h2><center>Se você possuir o número do RG do autor que lhe interessa, verifique abaixo as informações sobre seu livro:</center></h2>
+        <div id="numeroDeRG">
+            <form action="#" method="get" name="formPesquisa" id="formPesquisa">
+                <div><center>
+                    <label for="numeroDeRG">Informe a seguir o número de RG que deseja consultar: </label>
+                    <input type="number" name="numeroDeRG" id="numeroDeRG" />
+                </div>
+                <div><center>
+                    <button color=dark-blue class="btn btn-primary" onclick="pesquisarRG()"><span class="glyphicon glyphicon-search"> PESQUISAR RG <span class="glyphicon glyphicon-search"></center></span></button>
+                        </center></div>
+            </form>
+            <div id="resultadoPesquisa"></div>
+        </div>
+        <br>
+        <br>
+        <h2><center>Se você possuir o título do livro que lhe interessa, verifique abaixo suas características:</center></h2>
+        <div id="titulo">
+            <form action="#" method="get" name="formPesquisa" id="formPesquisa">
+                <div><center>
+                    <label for="titulo">Informe a seguir o título que deseja consultar: </label>
+                    <input type="text" name="titulo" id="titulo" />
+                </div>
+                <div><center>
+                    <button color=dark-blue class="btn btn-primary" onclick="pesquisarNomeDoAutor()"><span class="glyphicon glyphicon-search"> PESQUISAR TÍTULO <span class="glyphicon glyphicon-search"></center></span></button>
+                        </center></div>
+            </form>
+            <div id="resultadoPesquisa"></div>
+        </div>
+        <br>
+        <br>
+        <h2>Se você quiser registrar um livro, por favor siga as instruções abaixo:</h2>
+        <br>
+        <div id="registro">
+            <form name="formRegistro" id="formRegistro"><center>
+                <div>
+                    <label for="autor"><font color=black>Informe a seguir o autor do livro: </font></label>
+                    <input type="text" name="autor" id="autor" />
+                </div>
+                <div>
+                    <label for="cpf"><font color=grey>Informe a seguir o CPF do autor: </font></label>
+                    <input type="number" name="cpf" id="cpf" />
+                </div>
+                <div>
+                    <label for="rg"><font color=black>Informe a seguir o RG do autor: </font></label>
+                    <input type="number" name="rg" id="rg" size="45" />
+                </div>
+                <div>
+                    <label for="titulo"><font color=grey>Informe a seguir o título do livro: </font></label>
+                    <input type="text" name="titulo" id="titulo" />
+                </div>
+                <div>
+                    <label for="paginas"><font color=black>Informe a seguir o número de páginas do livro: </font></label>
+                    <input type="number" name="paginas" id="paginas" />
+                </div>
+                <div>
+                    <label for="resumo"><font color=grey>Informe a seguir o resumo do livro: </font></label>
+                    <input type="text" name="resumo" id="resumo" />
+                </div>
+                <div>
+                    <button color=dark-blue class="btn btn-primary" onclick="registrarImovel()"><span class="glyphicon glyphicon-save"> REGISTRAR DADOS DO IMÓVEL <span class="glyphicon glyphicon-save"></span></button>
+                </div>
+            </center></form>
+            <br>
+            <div>
+                <div id="statusTransacao">&nbsp;</div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="connectToSmartContract.js"></script>
+    <script src="abi.js"></script>
+    <script>
+        var frmPesquisa = document.formPesquisa;
+        function pesquisarImovel() {
+            event.preventDefault();
+            $("#resultadoPesquisa").html("");
+            contract.devolveTodasAsInfos(frmPesquisa.numeroDeRegistro.value, function (erro, resultado) {
+                if (erro) {
+                    console.log("pesquisarLivro");
+                    console.error(erro);
+                    alert("Houve um erro ao pesquisar o nome do autor");
+                    frmPesquisa.numeroDeRegistro.value = "";
+                    return
+                }
+                $("#resultadoPesquisa").html("O autor do livro informado é: " + resultado);
+            });
+        }
+
+        var frmRegistro = document.formRegistro;
+        function registrarImovel() {
+            event.preventDefault();
+            $("#statusTransacao").html("&nbsp;");
+            contract.registraImovel(
+                frmRegistro.autor.value,
+                frmRegistro.cpf.value,
+                frmRegistro.rg.value,
+                frmRegistro.titulo.value,
+                frmRegistro.paginas.value,
+                frmRegistro.resumo.value, {from: web3.eth.accounts[0], gas: 7000000, value: 0},
+            function (erro, resultado) {
+                if (erro) {
+                    console.log("registrarLivro");
+                    console.error(erro);
+                    alert("Houve um erro ao registrar esse livro");
+                    return
+                }
+                waitForTxToBeMined(resultado, "#statusTransacao");
+        });
+    }
+    </script>
+</body>
+</html>
